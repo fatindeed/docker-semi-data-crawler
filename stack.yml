@@ -1,0 +1,14 @@
+version: "2"
+services:
+  app:
+    image: fatindeed/semi-data-crawler
+    volumes:
+      - ${PWD}/data:/var/www/html/data
+    command: ["php", "-S", "127.0.0.1:8080"]
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    volumes:
+      - ${PWD}/data:/data
+      - ${PWD}/adminer-plugins:/var/www/html/plugins-enabled
